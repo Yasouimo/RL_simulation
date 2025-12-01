@@ -8,6 +8,21 @@
 
 ---
 
+<<<<<<< HEAD
+=======
+## 📊 Résultats
+
+| Méthode | Succès | Récompense | Vitesse |
+|---------|--------|------------|---------|
+| 🥇 **Value Iteration** | 95% | +9.2 | ⭐⭐⭐⭐⭐ |
+| 🥈 **Q-Learning Itératif** | 70% | +6.3 | ⭐⭐⭐⭐ |
+| 🥉 **Q-Learning Épisodique** | 55% | +4.5 | ⭐⭐⭐ |
+| 💀 **Random (Baseline)** | 5% | -3.2 | ⭐ |
+
+
+---
+
+>>>>>>> 47551b8e05cdb373e3d5644216becd86b57bde4f
 ## 🎯 L'Environnement
 
 ```
@@ -114,7 +129,55 @@ python compare_methods.py
 
 ![Comparison](Q-learning/comparison_results/comparison_20251201_173514.png)
 
+<<<<<<< HEAD
 **Conclusion** : Itératif converge **2x plus rapide** et atteint **70% succès** vs 55% pour Épisodique
+=======
+## 📁 Structure
+
+```
+RL_exo/
+├── Value Iteration/      # Planning (goal statique)
+├── Q-learning/
+│   ├── episodic/         # Updates fin d'épisode
+│   ├── iterative/        # Updates chaque step
+│   └── compare_methods.py
+└── Value Iteration Random/  # Baseline
+```
+
+---
+
+## 📊 Visualisation 4-Panel
+
+
+
+Chaque méthode affiche en temps réel :
+- 🗺️ **GridWorld** : Agent, goal, obstacles
+- 📈 **Courbes** : Récompenses et longueurs
+- 🔥 **Heatmap** : Q-values ou values
+- 📋 **Stats** : Taux de succès, epsilon, etc.
+
+---
+
+## 🔍 Différences Clés
+
+### Value Iteration vs Q-Learning
+
+| | Value Iteration | Q-Learning |
+|---|---|---|
+| **Type** | Planning | Learning |
+| **Goal** | Statique | Dynamique ✨ |
+| **Performance** | 95% | 70% |
+
+### Q-Learning : Itératif vs Épisodique
+
+| | Itératif | Épisodique |
+|---|---|---|
+| **Updates** | Chaque step | Fin d'épisode |
+| **Succès** | 70% | 55% |
+| **Vitesse** | ⚡ Rapide | 🐢 Lent |
+
+
+>>>>>>> 47551b8e05cdb373e3d5644216becd86b57bde4f
 
 ---
 

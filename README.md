@@ -17,7 +17,6 @@
 | 🥉 **Q-Learning Épisodique** | 55% | +4.5 | ⭐⭐⭐ |
 | 💀 **Random (Baseline)** | 5% | -3.2 | ⭐ |
 
-![Performance Comparison](https://via.placeholder.com/800x400/1a1a1a/00ff00?text=Performance+Chart+%7C+Value+Iteration+%3E+Q-Learning+Iterative+%3E+Q-Learning+Episodic+%3E+Random)
 
 ---
 
@@ -84,7 +83,7 @@ RL_exo/
 
 ## 📊 Visualisation 4-Panel
 
-![4-Panel Interface](https://via.placeholder.com/1200x800/2d2d2d/ffffff?text=GridWorld+%7C+Performance+Curves+%7C+Q-Table+Heatmap+%7C+Statistics)
+
 
 Chaque méthode affiche en temps réel :
 - 🗺️ **GridWorld** : Agent, goal, obstacles
@@ -112,7 +111,7 @@ Chaque méthode affiche en temps réel :
 | **Succès** | 70% | 55% |
 | **Vitesse** | ⚡ Rapide | 🐢 Lent |
 
-![Learning Speed](https://via.placeholder.com/800x300/1a1a1a/ffaa00?text=Iterative+converges+2x+faster+than+Episodic)
+
 
 ---
 

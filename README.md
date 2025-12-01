@@ -8,19 +8,6 @@
 
 ---
 
-## 📊 Résultats
-
-| Méthode | Succès | Récompense | Vitesse |
-|---------|--------|------------|---------|
-| 🥇 **Value Iteration** | 95% | +9.2 | ⭐⭐⭐⭐⭐ |
-| 🥈 **Q-Learning Itératif** | 70% | +6.3 | ⭐⭐⭐⭐ |
-| 🥉 **Q-Learning Épisodique** | 55% | +4.5 | ⭐⭐⭐ |
-| 💀 **Random (Baseline)** | 5% | -3.2 | ⭐ |
-
-![Performance Comparison](https://via.placeholder.com/800x400/1a1a1a/00ff00?text=Performance+Chart+%7C+Value+Iteration+%3E+Q-Learning+Iterative+%3E+Q-Learning+Episodic+%3E+Random)
-
----
-
 ## 🎯 L'Environnement
 
 ```
@@ -39,102 +26,142 @@
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Installation
 
 ```bash
-# Installation
 pip install -r requirements.txt
+```
 
-# Value Iteration (meilleure performance)
+---
+
+## 🧠 1. Value Iteration (Planning)
+
+**Logique** : Calcule mathématiquement la meilleure stratégie **avant** de jouer. Utilise l'équation de Bellman pour trouver la valeur optimale de chaque case, sachant toutes les règles du jeu.
+
+```bash
 cd "Value Iteration"
 python main.py
+```
 
-# Q-Learning Itératif (recommandé)
+![Value Iteration](Value%20Iteration/results/value_table_5x5_20251201_170501.png)
+
+**Performance** : ✅ 95% succès · +9.2 récompense · ⭐⭐⭐⭐⭐
+
+---
+
+## 🎯 2. Q-Learning Itératif (Apprentissage Rapide)
+
+**Logique** : Apprend en **jouant**. Après chaque action, met immédiatement à jour la Q-table (mémoire des bonnes actions). Plus réactif car apprend step par step.
+
+```bash
 cd Q-learning/iterative
 python train_iterative.py
+```
 
-# Q-Learning Épisodique
+![Iterative Training](Q-learning/iterative/results_iterative/training_iterative_20251201_175422.png)
+
+**Performance** : ✅ 70% succès · +6.3 récompense · ⭐⭐⭐⭐
+
+---
+
+## 📦 3. Q-Learning Épisodique (Apprentissage par Épisode)
+
+**Logique** : Apprend en **jouant** aussi, mais stocke toutes les actions d'un épisode en mémoire et met à jour la Q-table seulement **à la fin**. Plus lent à apprendre.
+
+```bash
 cd Q-learning/episodic
 python train_episodic.py
+```
 
-# Random Agent (baseline)
+![Episodic Training](Q-learning/episodic/results_episodic/training_episodic_20251201_175253.png)
+
+**Performance** : ⚠️ 55% succès · +4.5 récompense · ⭐⭐⭐
+
+---
+
+## 🎲 4. Random Agent (Baseline)
+
+**Logique** : **Aucune intelligence**. Choisit des actions complètement au hasard, sans jamais apprendre. Sert à prouver que l'apprentissage marche vraiment.
+
+```bash
 cd "Value Iteration Random"
 python train_random.py
+```
 
-# Comparer Q-Learning
+![Random Baseline](Value%20Iteration%20Random/results_random/random_baseline_20251201_182011.png)
+
+**Performance** : ❌ 5% succès · -3.2 récompense · ⭐
+
+---
+
+## 📊 Comparaison Finale
+
+### Tableau Récapitulatif
+
+| Méthode | Succès | Récompense | Apprentissage |
+|---------|--------|------------|---------------|
+| 🥇 **Value Iteration** | 95% | +9.2 | Hors-ligne (planning) |
+| 🥈 **Q-Learning Itératif** | 70% | +6.3 | En ligne (step) |
+| 🥉 **Q-Learning Épisodique** | 55% | +4.5 | En ligne (episode) |
+| 💀 **Random** | 5% | -3.2 | Aucun |
+
+### Analyse Graphique : Q-Learning Itératif vs Épisodique
+
+```bash
 cd Q-learning
 python compare_methods.py
 ```
 
----
+![Comparison](Q-learning/comparison_results/comparison_20251201_173514.png)
 
-## 📁 Structure
-
-```
-RL_exo/
-├── Value Iteration/      # Planning (goal statique)
-├── Q-learning/
-│   ├── episodic/         # Updates fin d'épisode
-│   ├── iterative/        # Updates chaque step
-│   └── compare_methods.py
-└── Value Iteration Random/  # Baseline
-```
-
----
-
-## 📊 Visualisation 4-Panel
-
-![4-Panel Interface](https://via.placeholder.com/1200x800/2d2d2d/ffffff?text=GridWorld+%7C+Performance+Curves+%7C+Q-Table+Heatmap+%7C+Statistics)
-
-Chaque méthode affiche en temps réel :
-- 🗺️ **GridWorld** : Agent, goal, obstacles
-- 📈 **Courbes** : Récompenses et longueurs
-- 🔥 **Heatmap** : Q-values ou values
-- 📋 **Stats** : Taux de succès, epsilon, etc.
-
----
-
-## 🔍 Différences Clés
-
-### Value Iteration vs Q-Learning
-
-| | Value Iteration | Q-Learning |
-|---|---|---|
-| **Type** | Planning | Learning |
-| **Goal** | Statique | Dynamique ✨ |
-| **Performance** | 95% | 70% |
-
-### Q-Learning : Itératif vs Épisodique
-
-| | Itératif | Épisodique |
-|---|---|---|
-| **Updates** | Chaque step | Fin d'épisode |
-| **Succès** | 70% | 55% |
-| **Vitesse** | ⚡ Rapide | 🐢 Lent |
-
-![Learning Speed](https://via.placeholder.com/800x300/1a1a1a/ffaa00?text=Iterative+converges+2x+faster+than+Episodic)
+**Conclusion** : Itératif converge **2x plus rapide** et atteint **70% succès** vs 55% pour Épisodique
 
 ---
 
 ## 💡 Ce Qu'On Apprend
 
-1. **Planning vs Learning** : Value Iteration gagne quand on connaît l'environnement
-2. **Updates immédiates** : Itératif bat Épisodique (+30% succès)
-3. **Baseline importante** : Random (5%) prouve la valeur de l'apprentissage (+65%)
+### 🎯 Différence Clé : Planning vs Learning
+
+- **Value Iteration** (planning) : Réfléchit **avant** de jouer → connaît tout l'environnement → **95% succès**
+- **Q-Learning** (learning) : Apprend **en jouant** → découvre l'environnement → **55-70% succès**
+
+### ⚡ Différence Clé : Updates Immédiates vs Différées
+
+- **Itératif** : Update après chaque step → apprentissage rapide → **70% succès**
+- **Épisodique** : Update à la fin d'épisode → apprentissage lent → **55% succès**
+
+### 📊 Pourquoi la Baseline Random ?
+
+- **Random** : 5% succès → prouve que le problème est **difficile**
+- **Gain RL** : +65% de succès → prouve que **l'apprentissage fonctionne vraiment**
+
+---
+
+## 📁 Structure du Projet
+
+```
+RL_exo/
+├── Value Iteration/           # Planning (goal statique)
+├── Q-learning/
+│   ├── episodic/              # Updates fin d'épisode
+│   ├── iterative/             # Updates chaque step
+│   └── compare_methods.py     # Comparaison graphique
+└── Value Iteration Random/    # Baseline aléatoire
+```
 
 ---
 
 ## 🎓 Concepts Implémentés
 
-✅ Bellman Equation · Q-Learning · Epsilon-Greedy · State Augmentation · Heatmaps · Real-time Visualization
+✅ **Bellman Equation** · **Q-Learning** · **Epsilon-Greedy** · **State Augmentation** · **Q-Table Heatmaps** · **Real-time Visualization**
 
 ---
 
-## 📚 Documentation
+## 📚 Documentation Détaillée
 
-- [`Value Iteration/README.md`](Value%20Iteration/README.md)
-- [`Q-learning/README.md`](Q-learning/README.md)
-- [`Value Iteration Random/README.md`](Value%20Iteration%20Random/README.md)
+- [`Value Iteration/README.md`](Value%20Iteration/README.md) - Planning classique
+- [`Q-learning/README.md`](Q-learning/README.md) - Comparaison des méthodes
+- [`Value Iteration Random/README.md`](Value%20Iteration%20Random/README.md) - Baseline
 
 ---
 
@@ -142,8 +169,6 @@ Chaque méthode affiche en temps réel :
 
 **Technologies** : Python 3.8+ · NumPy · Matplotlib  
 **Inspiration** : Sutton & Barto - "Reinforcement Learning: An Introduction"
-
-![RL Logo](https://via.placeholder.com/600x200/4a90e2/ffffff?text=Reinforcement+Learning+GridWorld)
 
 **⭐ Comparez les 4 méthodes pour voir la puissance de l'apprentissage ! ⭐**
 

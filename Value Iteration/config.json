@@ -1,0 +1,13 @@
+{
+  "grid_size": 5,
+  "start_pos": [0, 0],
+  "goal_pos": [4, 4],
+  "obstacles": [
+    [2, 2],
+    [3, 2]
+  ],
+  "step_cost": -0.01,
+  "animation_speed": 3,
+  "save_figures": true,
+  "output_folder": "results"
+}
